@@ -1,0 +1,252 @@
+use("citas_medicas");
+db.createCollection("tipo_documento", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["tipdoc_id", "tipdoc_nombre", "tipodoc_abreviatura"],
+            properties: {
+                tipodoc_id: {
+                    bsonType: "int",
+                    description : "tipdoc_id is required"
+                },
+                tipdoc_nombre: {
+                    bsonType: "string",
+                    description : "tipdoc_nombre is required"
+                },
+                tipodoc_abreviatura: {
+                    bsonType: "string",
+                    description : "tipodoc_abreviatura is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("especialidad", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["esp_id", "esp_nombre"],
+            properties: {
+                esp_id: {
+                    bsonType: "int",
+                    description : "esp_id is required"
+                },
+                esp_nombre: {
+                    bsonType: "string",
+                    description : "esp_nombre is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("consultorio", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["cons_codigo", "cons_nombre"],
+            properties: {
+                cons_codigo: {
+                    bsonType: "int",
+                    description : "esp_id is required"
+                },
+                cons_nombre: {
+                    bsonType: "string",
+                    description : "esp_nombre is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("medico", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["med_nroMatriculaProfesional", "med_nombreCompleto", "med_consultorio", "med_especialidad"],
+            properties: {
+                med_nroMatriculaProfesional: {
+                    bsonType: "int",
+                    description : "med_nroMatriculaProfesional is required"
+                },
+                med_nombreCompleto: {
+                    bsonType: "string",
+                    description : "med_nombreCompleto is required"
+                },
+                med_consultorio: {
+                    bsonType: "int",
+                    description : "med_consultorio is required"
+                },
+                med_especialidad: {
+                    bsonType: "int",
+                    description : "med_especialidad is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("cita", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["cit_codigo", "cit_fecha", "cit_estadoCita", "cit_medico", "cit_datosUsuario"],
+            properties: {
+                cit_codigo: {
+                    bsonType: "int",
+                    description : "cit_codigo is required"
+                },
+                cit_fecha: {
+                    bsonType: "string",
+                    description : "cit_fecha is required"
+                },
+                cit_estadoCita: {
+                    bsonType: "int",
+                    description : "cit_estadoCita is required"
+                },
+                cit_medico: {
+                    bsonType: "int",
+                    description : "cit_medico is required"
+                },
+                cit_datosUsuario: {
+                    bsonType: "int",
+                    description : "cit_datosUsuario is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("estado_cita", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["estcita_id", "estcita_nombre"],
+            properties: {
+                estcita_id: {
+                    bsonType: "int",
+                    description : "estcita_id is required"
+                },
+                estcita_nombre: {
+                    bsonType: "string",
+                    description : "estcita_nombre is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("genero", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["gen_id", "gen_nombre", "gen_abreviatura"],
+            properties: {
+                gen_id: {
+                    bsonType: "int",
+                    description : "gen_id is required"
+                },
+                gen_nombre: {
+                    bsonType: "string",
+                    description : "gen_nombre is required"
+                }
+                ,
+                gen_abreviatura: {
+                    bsonType: "string",
+                    description : "gen_abreviatura is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("acudiente", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["acu_codigo", "acu_nombreCompleto", "acu_telefono", "acu_direccion"],
+            properties: {
+                acu_codigo: {
+                    bsonType: "int",
+                    description : "acu_codigo is required"
+                },
+                acu_nombreCompleto: {
+                    bsonType: "string",
+                    description : "acu_nombreCompleto is required"
+                },
+                acu_telefono: {
+                    bsonType: "string",
+                    description : "acu_telefono is required"
+                },
+                acu_direccion: {
+                    bsonType: "string",
+                    description : "acu_direccion is required"
+                }
+            }
+        }
+    }  
+})
+
+use("citas_medicas");
+db.createCollection("usuario", {
+    validator: {
+        $jsonSchema: {
+        bsonType: "object",
+        required: ["usu_id", "usu_nombre", "usu_segdo_nombre", "usu_primer_apellido_usuar", "usu_segdo_apellido_usuar", "usu_telefono", "usu_direccion", "usu_email", "usu_tipodoc", "usu_genero", "usu_acudiente"],
+            properties: {
+                usu_id: {
+                    bsonType: "int",
+                    description : "usu_id is required"
+                },
+                usu_nombre: {
+                    bsonType: "string",
+                    description : "usu_nombre is required"
+                },
+                usu_segdo_nombre: {
+                    bsonType: "string",
+                    description : "usu_segdo_nombre is required"
+                },
+                usu_primer_apellido_usuar: {
+                    bsonType: "string",
+                    description : "usu_primer_apellido_usuar is required"
+                },
+                usu_segdo_apellido_usuar: {
+                    bsonType: "string",
+                    description : "usu_segdo_apellido_usuar is required"
+                },
+                usu_telefono: {
+                    bsonType: "string",
+                    description : "usu_telefono is required"
+                },
+                usu_direccion: {
+                    bsonType: "string",
+                    description : "usu_direccion is required"
+                },
+                usu_email: {
+                    bsonType: "string",
+                    description : "usu_email is required"
+                },
+                usu_tipodoc: {
+                    bsonType: "string",
+                    description : "usu_tipodoc is required"
+                },
+                usu_genero: {
+                    bsonType: "string",
+                    description : "usu_genero is required"
+                },
+                usu_acudiente: {
+                    bsonType: "string",
+                    description : "usu_acudiente is required"
+                }
+            }
+        }
+    }  
+})
